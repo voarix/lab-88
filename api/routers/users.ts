@@ -37,15 +37,14 @@ usersRouter.post('/sessions', async (req, res, next) => {
       return;
     }
 
-    const isMath = await user.checkPassword(req.body.password);
-    if (!isMath) {
+    const isMatch = await user.checkPassword(req.body.password);
+    if (!isMatch) {
       res.status(400).send({error: 'Password is incorrect'});
       return;
     }
 
     user.generateToken();
     await user.save();
-
     res.send({message: 'Username and password is correct', user});
   } catch (error) {
     next(error);
