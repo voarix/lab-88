@@ -9,7 +9,8 @@ import Link from "@mui/material/Link";
 import Avatar from "@mui/material/Avatar";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
-import { Alert, Button, TextField } from "@mui/material";
+import { Alert, Button, TextField, InputAdornment } from "@mui/material";
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import { login } from "./usersThunks.ts";
 import { toast } from "react-toastify";
 
@@ -50,20 +51,27 @@ const Login = () => {
         alignItems: "center",
       }}
     >
-      <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-        <LockOutlinedIcon />
+      <Avatar sx={{ m: 1, bgcolor: "#FF8E53" }}>
+        <LockOutlinedIcon sx={{ color: '#fff' }} />
       </Avatar>
-      <Typography component="h1" variant="h5">
+      <Typography component="h1" variant="h5" sx={{ textDecorationColor: '#FF8E53', textUnderlineOffset: '4px' }}>
         Sign in
       </Typography>
 
-      {error && <Alert severity="error">{error.error}</Alert>}
+      {error && <Alert severity="error" sx={{mt: 2}}>{error.error}</Alert>}
 
       <Box
         component="form"
         noValidate
         onSubmit={onSubmitFormHandler}
-        sx={{ mt: 3 }}
+        sx={{
+          mt: 3,
+          p: 3,
+          boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+          borderRadius: 1,
+          background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+          color: '#fff',
+        }}
       >
         <Grid container spacing={2}>
           <Grid size={{ xs: 12 }}>
@@ -77,6 +85,27 @@ const Login = () => {
               value={form.username}
               onChange={onInputChange}
               error={!!error}
+              variant="standard"
+              InputLabelProps={{ style: { color: '#fff' } }}
+              InputProps={{
+                style: { color: '#fff' },
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <PersonOutlineIcon sx={{ color: '#fff' }} />
+                  </InputAdornment>
+                ),
+              }}
+              sx={{
+                '& .MuiInput-underline:before': {
+                  borderBottomColor: 'rgba(255, 255, 255, 0.5)',
+                },
+                '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
+                  borderBottomColor: '#FF8E53',
+                },
+                '& .MuiInput-underline:after': {
+                  borderBottomColor: '#FE6B8B',
+                },
+              }}
             />
           </Grid>
           <Grid size={{ xs: 12 }}>
@@ -91,6 +120,27 @@ const Login = () => {
               value={form.password}
               onChange={onInputChange}
               error={!!error}
+              variant="standard"
+              InputLabelProps={{ style: { color: '#fff' } }}
+              InputProps={{
+                style: { color: '#fff' },
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <LockOutlinedIcon sx={{ color: '#fff' }} />
+                  </InputAdornment>
+                ),
+              }}
+              sx={{
+                '& .MuiInput-underline:before': {
+                  borderBottomColor: 'rgba(255, 255, 255, 0.5)',
+                },
+                '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
+                  borderBottomColor: '#FF8E53',
+                },
+                '& .MuiInput-underline:after': {
+                  borderBottomColor: '#FE6B8B',
+                },
+              }}
             />
           </Grid>
         </Grid>
@@ -99,13 +149,21 @@ const Login = () => {
           type="submit"
           fullWidth
           variant="contained"
-          sx={{ mt: 3, mb: 2 }}
+          sx={{
+            mt: 3,
+            mb: 2,
+            bgcolor: '#fff',
+            color: '#FE6B8B',
+            '&:hover': {
+              bgcolor: '#eee',
+            }
+          }}
         >
           Sign In
         </Button>
         <Grid container justifyContent="space-between">
           <Grid sx={{ mx: "auto" }}>
-            <Link to="/register" variant="body2" component={RouterLink}>
+            <Link to="/register" variant="body2" component={RouterLink} sx={{ color: '#fff' }}>
               Don't have an account, yet? Sign up
             </Link>
           </Grid>
