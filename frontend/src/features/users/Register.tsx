@@ -7,10 +7,9 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import Avatar from "@mui/material/Avatar";
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
-import { Button, TextField, InputAdornment } from "@mui/material";
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import { Button, TextField } from "@mui/material";
 import { register } from "./usersThunks.ts";
 import { toast } from "react-toastify";
 
@@ -59,7 +58,7 @@ const Register = () => {
         alignItems: "center",
       }}
     >
-      <Avatar sx={{ m: 1, bgcolor: "#FF8E53" }}>
+      <Avatar sx={{ m: 1, backgroundColor: "#FF8E53" }}>
         <LockOutlinedIcon sx={{ color: '#fff' }} />
       </Avatar>
       <Typography component="h1" variant="h5" sx={{ textDecorationColor: '#FF8E53', textUnderlineOffset: '4px' }}>
@@ -92,16 +91,9 @@ const Register = () => {
               helperText={getFieldError("username")}
               error={Boolean(getFieldError("username"))}
               variant="standard"
-              InputLabelProps={{ style: { color: '#fff' } }}
-              InputProps={{
-                style: { color: '#fff' },
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <PersonOutlineIcon sx={{ color: '#fff' }} />
-                  </InputAdornment>
-                ),
-              }}
               sx={{
+                '& .MuiInputLabel-root': { color: '#fff' },
+                '& .MuiInputBase-input': { color: '#fff', caretColor: '#fff' },
                 '& .MuiInput-underline:before': {
                   borderBottomColor: 'rgba(255, 255, 255, 0.5)',
                 },
@@ -110,7 +102,7 @@ const Register = () => {
                 },
                 '& .MuiInput-underline:after': {
                   borderBottomColor: '#FE6B8B',
-                },
+                }
               }}
             />
           </Grid>
@@ -128,16 +120,9 @@ const Register = () => {
               helperText={getFieldError("password")}
               error={Boolean(getFieldError("password"))}
               variant="standard"
-              InputLabelProps={{ style: { color: '#fff' } }}
-              InputProps={{
-                style: { color: '#fff' },
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <LockOutlinedIcon sx={{ color: '#fff' }} />
-                  </InputAdornment>
-                ),
-              }}
               sx={{
+                '& .MuiInputLabel-root': { color: '#fff' },
+                '& .MuiInputBase-input': { color: '#fff', caretColor: '#fff' },
                 '& .MuiInput-underline:before': {
                   borderBottomColor: 'rgba(255, 255, 255, 0.5)',
                 },
@@ -146,7 +131,7 @@ const Register = () => {
                 },
                 '& .MuiInput-underline:after': {
                   borderBottomColor: '#FE6B8B',
-                },
+                }
               }}
             />
           </Grid>
@@ -159,10 +144,10 @@ const Register = () => {
           sx={{
             mt: 3,
             mb: 2,
-            bgcolor: '#fff',
+            backgroundColor: '#fff',
             color: '#FE6B8B',
             '&:hover': {
-              bgcolor: '#eee',
+              backgroundColor: '#eee',
             }
           }}
         >
