@@ -1,10 +1,11 @@
 import express from "express";
-import {Error} from 'mongoose';
+import { Error } from "mongoose";
 import User from "../models/User";
+import auth, { RequestWithUser } from "../middleware/auth";
 
 const usersRouter = express.Router();
 
-usersRouter.post('/', async (req, res, next) => {
+usersRouter.post("/", async (req, res, next) => {
   try {
     const user = new User({
       username: req.body.username,
@@ -13,7 +14,7 @@ usersRouter.post('/', async (req, res, next) => {
 
     user.generateToken();
     await user.save();
-    res.send({user, message: 'User registered successfully.'});
+    res.send({user, message: "User registered successfully."});
   } catch (error) {
     if (error instanceof Error.ValidationError) {
       res.status(400).send(error);
@@ -24,10 +25,10 @@ usersRouter.post('/', async (req, res, next) => {
   }
 });
 
-usersRouter.post('/sessions', async (req, res, next) => {
+usersRouter.post("/sessions", async (req, res, next) => {
   try {
     if (!req.body.username || !req.body.password) {
-      res.status(400).send({error: 'Username and password must be in req'});
+      res.status(400).send({error: "Username and password must be in req"});
       return;
     }
 
@@ -39,16 +40,47 @@ usersRouter.post('/sessions', async (req, res, next) => {
 
     const isMatch = await user.checkPassword(req.body.password);
     if (!isMatch) {
-      res.status(400).send({error: 'Password is incorrect'});
+      res.status(400).send({error: "Password is incorrect"});
       return;
     }
 
     user.generateToken();
     await user.save();
-    res.send({message: 'Username and password is correct', user});
+    res.send({message: "Username and password is correct", user});
   } catch (error) {
     next(error);
   }
+});
+
+usersRouter.delete("/sessions", async (req, res, next) => {
+  const token = req.get("Authorization");
+
+  if (!token) {
+    res.send({message: "Success logout"});
+    return;
+  }
+
+  try {
+    const user = await User.findOne({token});
+
+    if (user) {
+      user.generateToken();
+      await user.save();
+    }
+
+    res.send({message: "Success logout"});
+  } catch (error) {
+    next(error);
+  }
+});
+
+usersRouter.post("/secret", auth, async (req, res) => {
+  const user = (req as RequestWithUser).user;
+
+  res.send({
+    message: "Secret message",
+    user: user,
+  });
 });
 
 export default usersRouter;

@@ -1,6 +1,6 @@
-import {NextFunction, Request, Response} from "express";
-import {HydratedDocument} from "mongoose";
-import {UserFields} from "../types";
+import { NextFunction, Request, Response } from "express";
+import { HydratedDocument } from "mongoose";
+import { UserFields } from "../types";
 import User from "../models/User";
 
 export interface RequestWithUser extends Request {
@@ -10,18 +10,18 @@ export interface RequestWithUser extends Request {
 const auth = async (
   expressReq: Request,
   res: Response,
-  next: NextFunction ) => {
+  next: NextFunction) => {
   const req = expressReq as RequestWithUser;
 
-  const token = req.get('Authorization');
+  const token = req.get("Authorization");
   if (!token) {
-    res.status(401).send({error: 'No token provided.'});
+    res.status(401).send({error: "No token provided."});
     return;
   }
 
   const user = await User.findOne({token});
   if (!user) {
-    res.status(401).send({error: 'No such user found'});
+    res.status(401).send({error: "No such user found"});
     return;
   }
 
