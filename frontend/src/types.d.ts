@@ -14,6 +14,17 @@ export interface RegisterMutation {
   password: string;
 }
 
+export interface Post {
+  _id: string;
+  title: string;
+  image: string | null;
+  user: {
+    _id: string;
+    username: string;
+  };
+  datetime: string;
+}
+
 export interface ValidationError {
   errors: {
     [key: string]: {

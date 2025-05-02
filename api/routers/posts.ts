@@ -60,7 +60,7 @@ postsRouter.post("/", auth, imagesUpload.single("image"), async (req, res, next)
     }
 
     if (req.file) {
-      newPost.image = "posts/" + req.file.filename;
+      newPost.image = "images/" + req.file.filename;
     }
 
     const post = new Post(newPost);

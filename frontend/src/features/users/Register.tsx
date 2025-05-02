@@ -59,9 +59,13 @@ const Register = () => {
       }}
     >
       <Avatar sx={{ m: 1, backgroundColor: "#FF8E53" }}>
-        <LockOutlinedIcon sx={{ color: '#fff' }} />
+        <LockOutlinedIcon sx={{ color: "#fff" }} />
       </Avatar>
-      <Typography component="h1" variant="h5" sx={{ textDecorationColor: '#FF8E53', textUnderlineOffset: '4px' }}>
+      <Typography
+        component="h1"
+        variant="h5"
+        sx={{ textDecorationColor: "#FF8E53", textUnderlineOffset: "4px" }}
+      >
         Sign up
       </Typography>
       <Box
@@ -71,10 +75,10 @@ const Register = () => {
         sx={{
           mt: 3,
           p: 3,
-          boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+          boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
           borderRadius: 1,
-          background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-          color: '#fff',
+          background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+          color: "#fff",
         }}
       >
         <Grid container spacing={2}>
@@ -92,17 +96,17 @@ const Register = () => {
               error={Boolean(getFieldError("username"))}
               variant="standard"
               sx={{
-                '& .MuiInputLabel-root': { color: '#fff' },
-                '& .MuiInputBase-input': { color: '#fff', caretColor: '#fff' },
-                '& .MuiInput-underline:before': {
-                  borderBottomColor: 'rgba(255, 255, 255, 0.5)',
+                "& .MuiInputLabel-root": { color: "#fff" },
+                "& .MuiInputBase-input": { color: "#fff", caretColor: "#fff" },
+                "& .MuiInput-underline:before": {
+                  borderBottomColor: "rgba(255, 255, 255, 0.5)",
                 },
-                '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
-                  borderBottomColor: '#FF8E53',
+                "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
+                  borderBottomColor: "#FF8E53",
                 },
-                '& .MuiInput-underline:after': {
-                  borderBottomColor: '#FE6B8B',
-                }
+                "& .MuiInput-underline:after": {
+                  borderBottomColor: "#FE6B8B",
+                },
               }}
             />
           </Grid>
@@ -121,17 +125,17 @@ const Register = () => {
               error={Boolean(getFieldError("password"))}
               variant="standard"
               sx={{
-                '& .MuiInputLabel-root': { color: '#fff' },
-                '& .MuiInputBase-input': { color: '#fff', caretColor: '#fff' },
-                '& .MuiInput-underline:before': {
-                  borderBottomColor: 'rgba(255, 255, 255, 0.5)',
+                "& .MuiInputLabel-root": { color: "#fff" },
+                "& .MuiInputBase-input": { color: "#fff", caretColor: "#fff" },
+                "& .MuiInput-underline:before": {
+                  borderBottomColor: "rgba(255, 255, 255, 0.5)",
                 },
-                '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
-                  borderBottomColor: '#FF8E53',
+                "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
+                  borderBottomColor: "#FF8E53",
                 },
-                '& .MuiInput-underline:after': {
-                  borderBottomColor: '#FE6B8B',
-                }
+                "& .MuiInput-underline:after": {
+                  borderBottomColor: "#FE6B8B",
+                },
               }}
             />
           </Grid>
@@ -144,18 +148,23 @@ const Register = () => {
           sx={{
             mt: 3,
             mb: 2,
-            backgroundColor: '#fff',
-            color: '#FE6B8B',
-            '&:hover': {
-              backgroundColor: '#eee',
-            }
+            backgroundColor: "#fff",
+            color: "#FE6B8B",
+            "&:hover": {
+              backgroundColor: "#eee",
+            },
           }}
         >
           Sign Up
         </Button>
         <Grid container justifyContent="space-between">
           <Grid sx={{ mx: "auto" }}>
-            <Link to="/login" variant="body2" component={RouterLink} sx={{ color: '#fff' }}>
+            <Link
+              to="/login"
+              variant="body2"
+              component={RouterLink}
+              sx={{ color: "#fff" }}
+            >
               Already have an account? Sign in
             </Link>
           </Grid>

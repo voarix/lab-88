@@ -50,10 +50,7 @@ export const login = createAsyncThunk<
     );
     return response.data.user;
   } catch (error) {
-    if (
-      isAxiosError(error) &&
-      error.response
-    ) {
+    if (isAxiosError(error) && error.response) {
       return rejectWithValue(error.response.data);
     }
     throw error;
