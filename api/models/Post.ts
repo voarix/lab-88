@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const PostSchema = new Schema({
   title: {
     type: String,
+    minlength: [5, "Title must be more than 5 characters"],
     required: [true, "Title is required"],
   },
   description: String,

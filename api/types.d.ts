@@ -10,3 +10,9 @@ export interface PostMutation {
   image: string | null;
   user: string;
 }
+
+export interface CommentMutation {
+  user: string;
+  post: string;
+  text: string;
+}
