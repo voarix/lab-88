@@ -12,6 +12,7 @@ import Typography from "@mui/material/Typography";
 import { Alert, Button, TextField } from "@mui/material";
 import { login } from "./usersThunks.ts";
 import { toast } from "react-toastify";
+import BackHome from "../../components/UI/BackHome.tsx";
 
 const initialForm: LoginMutation = {
   username: "",
@@ -42,6 +43,9 @@ const Login = () => {
   };
 
   return (
+    <>
+      <BackHome/>
+
     <Box
       sx={{
         marginTop: 8,
@@ -168,6 +172,7 @@ const Login = () => {
         </Grid>
       </Box>
     </Box>
+    </>
   );
 };
 

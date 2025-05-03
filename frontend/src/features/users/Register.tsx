@@ -12,6 +12,7 @@ import Typography from "@mui/material/Typography";
 import { Button, TextField } from "@mui/material";
 import { register } from "./usersThunks.ts";
 import { toast } from "react-toastify";
+import BackHome from "../../components/UI/BackHome.tsx";
 
 const initialForm: RegisterMutation = {
   username: "",
@@ -34,8 +35,8 @@ const Register = () => {
   };
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
+    const {name, value} = e.target;
+    setForm({...form, [name]: value});
   };
 
   const onSubmitFormHandler = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -50,127 +51,131 @@ const Register = () => {
   };
 
   return (
-    <Box
-      sx={{
-        marginTop: 8,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      <Avatar sx={{ m: 1, backgroundColor: "#FF8E53" }}>
-        <LockOutlinedIcon sx={{ color: "#fff" }} />
-      </Avatar>
-      <Typography
-        component="h1"
-        variant="h5"
-        sx={{ textDecorationColor: "#FF8E53", textUnderlineOffset: "4px" }}
-      >
-        Sign up
-      </Typography>
+    <>
+      <BackHome/>
+
       <Box
-        component="form"
-        noValidate
-        onSubmit={onSubmitFormHandler}
         sx={{
-          mt: 3,
-          p: 3,
-          boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
-          borderRadius: 1,
-          background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
-          color: "#fff",
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
         }}
       >
-        <Grid container spacing={2}>
-          <Grid size={{ xs: 12 }}>
-            <TextField
-              disabled={registerLoading}
-              fullWidth
-              id="username"
-              label="Username"
-              name="username"
-              autoComplete="family-name"
-              value={form.username}
-              onChange={onInputChange}
-              helperText={getFieldError("username")}
-              error={Boolean(getFieldError("username"))}
-              variant="standard"
-              sx={{
-                "& .MuiInputLabel-root": { color: "#fff" },
-                "& .MuiInputBase-input": { color: "#fff", caretColor: "#fff" },
-                "& .MuiInput-underline:before": {
-                  borderBottomColor: "rgba(255, 255, 255, 0.5)",
-                },
-                "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
-                  borderBottomColor: "#FF8E53",
-                },
-                "& .MuiInput-underline:after": {
-                  borderBottomColor: "#FE6B8B",
-                },
-              }}
-            />
-          </Grid>
-          <Grid size={{ xs: 12 }}>
-            <TextField
-              disabled={registerLoading}
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="new-password"
-              value={form.password}
-              onChange={onInputChange}
-              helperText={getFieldError("password")}
-              error={Boolean(getFieldError("password"))}
-              variant="standard"
-              sx={{
-                "& .MuiInputLabel-root": { color: "#fff" },
-                "& .MuiInputBase-input": { color: "#fff", caretColor: "#fff" },
-                "& .MuiInput-underline:before": {
-                  borderBottomColor: "rgba(255, 255, 255, 0.5)",
-                },
-                "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
-                  borderBottomColor: "#FF8E53",
-                },
-                "& .MuiInput-underline:after": {
-                  borderBottomColor: "#FE6B8B",
-                },
-              }}
-            />
-          </Grid>
-        </Grid>
-        <Button
-          disabled={registerLoading}
-          type="submit"
-          fullWidth
-          variant="contained"
+        <Avatar sx={{m: 1, backgroundColor: "#FF8E53"}}>
+          <LockOutlinedIcon sx={{color: "#fff"}}/>
+        </Avatar>
+        <Typography
+          component="h1"
+          variant="h5"
+          sx={{textDecorationColor: "#FF8E53", textUnderlineOffset: "4px"}}
+        >
+          Sign up
+        </Typography>
+        <Box
+          component="form"
+          noValidate
+          onSubmit={onSubmitFormHandler}
           sx={{
             mt: 3,
-            mb: 2,
-            backgroundColor: "#fff",
-            color: "#FE6B8B",
-            "&:hover": {
-              backgroundColor: "#eee",
-            },
+            p: 3,
+            boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+            borderRadius: 1,
+            background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+            color: "#fff",
           }}
         >
-          Sign Up
-        </Button>
-        <Grid container justifyContent="space-between">
-          <Grid sx={{ mx: "auto" }}>
-            <Link
-              to="/login"
-              variant="body2"
-              component={RouterLink}
-              sx={{ color: "#fff" }}
-            >
-              Already have an account? Sign in
-            </Link>
+          <Grid container spacing={2}>
+            <Grid size={{xs: 12}}>
+              <TextField
+                disabled={registerLoading}
+                fullWidth
+                id="username"
+                label="Username"
+                name="username"
+                autoComplete="family-name"
+                value={form.username}
+                onChange={onInputChange}
+                helperText={getFieldError("username")}
+                error={Boolean(getFieldError("username"))}
+                variant="standard"
+                sx={{
+                  "& .MuiInputLabel-root": {color: "#fff"},
+                  "& .MuiInputBase-input": {color: "#fff", caretColor: "#fff"},
+                  "& .MuiInput-underline:before": {
+                    borderBottomColor: "rgba(255, 255, 255, 0.5)",
+                  },
+                  "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
+                    borderBottomColor: "#FF8E53",
+                  },
+                  "& .MuiInput-underline:after": {
+                    borderBottomColor: "#FE6B8B",
+                  },
+                }}
+              />
+            </Grid>
+            <Grid size={{xs: 12}}>
+              <TextField
+                disabled={registerLoading}
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="new-password"
+                value={form.password}
+                onChange={onInputChange}
+                helperText={getFieldError("password")}
+                error={Boolean(getFieldError("password"))}
+                variant="standard"
+                sx={{
+                  "& .MuiInputLabel-root": {color: "#fff"},
+                  "& .MuiInputBase-input": {color: "#fff", caretColor: "#fff"},
+                  "& .MuiInput-underline:before": {
+                    borderBottomColor: "rgba(255, 255, 255, 0.5)",
+                  },
+                  "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
+                    borderBottomColor: "#FF8E53",
+                  },
+                  "& .MuiInput-underline:after": {
+                    borderBottomColor: "#FE6B8B",
+                  },
+                }}
+              />
+            </Grid>
           </Grid>
-        </Grid>
+          <Button
+            disabled={registerLoading}
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{
+              mt: 3,
+              mb: 2,
+              backgroundColor: "#fff",
+              color: "#FE6B8B",
+              "&:hover": {
+                backgroundColor: "#eee",
+              },
+            }}
+          >
+            Sign Up
+          </Button>
+          <Grid container justifyContent="space-between">
+            <Grid sx={{mx: "auto"}}>
+              <Link
+                to="/login"
+                variant="body2"
+                component={RouterLink}
+                sx={{color: "#fff"}}
+              >
+                Already have an account? Sign in
+              </Link>
+            </Grid>
+          </Grid>
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 };
 
