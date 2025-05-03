@@ -25,6 +25,12 @@ export interface Post {
   datetime: string;
 }
 
+export interface PostMutation {
+  title: string;
+  description?: string | null;
+  image?: File | null;
+}
+
 export interface ValidationError {
   errors: {
     [key: string]: {

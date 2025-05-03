@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Button, Menu, MenuItem } from "@mui/material";
-import { User } from "../../src/types";
-import { useAppDispatch } from "../../src/app/hooks";
-import { unsetUser } from "../../src/features/users/usersSlice";
-import { logout } from "../../src/features/users/usersThunks.ts";
+import { Button, Menu, MenuItem, styled } from "@mui/material";
+import { User } from "../../../types";
+import { useAppDispatch } from "../../../app/hooks.ts";
+import { unsetUser } from "../../../features/users/usersSlice.ts";
+import { logout } from "../../../features/users/usersThunks.ts";
 import { toast } from "react-toastify";
+import { NavLink } from "react-router-dom";
 
 interface Props {
   user: User;
@@ -29,8 +30,19 @@ const UserMenu: React.FC<Props> = ({ user }) => {
     toast.success("Logout is successful");
   };
 
+  const Link = styled(NavLink)({
+    color: "inherit",
+    textDecoration: "none",
+    "&:hover": {
+      color: "rgba(255, 255, 255, 0.8)",
+    },
+  });
+
   return (
     <>
+      <Link to="new-post" sx={{ textTransform: "uppercase" }}>
+        Add post
+      </Link>
       <Button onClick={handeClick} color="inherit">
         Hello, {user.username}!
       </Button>

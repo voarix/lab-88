@@ -1,13 +1,13 @@
 import "./App.css";
 import { Container, CssBaseline } from "@mui/material";
-import AppToolbar from "../components/UI/AppToolbar.tsx";
+import AppToolbar from "./components/UI/AppToolbar/AppToolbar.tsx";
 import { Route, Routes } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import { ToastContainer } from "react-toastify";
 import Register from "./features/users/Register.tsx";
 import Login from "./features/users/Login.tsx";
 import Posts from "./features/posts/Posts.tsx";
-import ProtectedRoute from "../components/UI/ProtectedRoute.tsx";
+import ProtectedRoute from "./components/UI/ProtectedRoute.tsx";
 import NewPost from "./features/posts/NewPost.tsx";
 import { useAppSelector } from "./app/hooks.ts";
 import { selectUser } from "./features/users/usersSlice.ts";

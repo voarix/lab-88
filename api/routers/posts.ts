@@ -65,6 +65,7 @@ postsRouter.post("/", auth, imagesUpload.single("image"), async (req, res, next)
 
     const post = new Post(newPost);
     await post.save();
+    await post.populate("user", "username");
     res.send({post});
   } catch (error) {
     if (error instanceof Error.ValidationError) {
