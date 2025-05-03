@@ -25,10 +25,36 @@ export interface Post {
   datetime: string;
 }
 
+export interface PostFull {
+  _id: string;
+  title: string;
+  image: string | null;
+  user: {
+    _id: string;
+    username: string;
+  };
+  datetime: string;
+  description: string | null;
+}
+
 export interface PostMutation {
   title: string;
   description?: string | null;
   image?: File | null;
+}
+
+export interface Comment {
+  _id: string;
+  user: {
+    _id: string;
+    username: string;
+  };
+  post: string;
+  text: string;
+}
+
+export interface CommentMutation {
+  text: string;
 }
 
 export interface ValidationError {

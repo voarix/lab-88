@@ -1,5 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { GlobalError, Post, PostMutation, ValidationError } from "../../types";
+import {
+  GlobalError,
+  Post,
+  PostFull,
+  PostMutation,
+  ValidationError,
+} from "../../types";
 import axiosApi from "../../axiosApi.ts";
 import { isAxiosError } from "axios";
 import { RootState } from "../../app/store.ts";
@@ -55,6 +61,22 @@ export const addNewPost = createAsyncThunk<
       error.response &&
       error.response.status === 400
     ) {
+      return rejectWithValue(error.response.data);
+    }
+    throw error;
+  }
+});
+
+export const fetchOnePost = createAsyncThunk<
+  PostFull,
+  string,
+  { rejectValue: GlobalError }
+>("posts/fetchOnePost", async (postId, { rejectWithValue }) => {
+  try {
+    const response = await axiosApi.get(`/posts/${postId}`);
+    return response.data.post;
+  } catch (error) {
+    if (isAxiosError(error) && error.response) {
       return rejectWithValue(error.response.data);
     }
     throw error;

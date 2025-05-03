@@ -11,6 +11,7 @@ import ProtectedRoute from "./components/UI/ProtectedRoute.tsx";
 import NewPost from "./features/posts/NewPost.tsx";
 import { useAppSelector } from "./app/hooks.ts";
 import { selectUser } from "./features/users/usersSlice.ts";
+import PostFullView from "./features/posts/PostFullView.tsx";
 
 const App = () => {
   const user = useAppSelector(selectUser);
@@ -28,6 +29,7 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/" element={<Posts />} />
+            <Route path="/posts/:id" element={<PostFullView />} />
             <Route
               path="/new-post"
               element={

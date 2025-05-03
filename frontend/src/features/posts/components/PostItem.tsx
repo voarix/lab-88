@@ -4,6 +4,7 @@ import { Post } from "../../../types";
 import { apiUrl } from "../../../globalConstants";
 import DescriptionIcon from "@mui/icons-material/Description";
 import dayjs from "dayjs";
+import { Link } from "react-router-dom";
 
 interface PostItemProps {
   post: Post;
@@ -60,9 +61,11 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
             {dayjs(post.datetime).format("DD.MM.YYYY HH:mm")}
           </Typography>
 
-          <Typography variant="h6" component="div" sx={{ mt: 0.5 }}>
-            {post.title}
-          </Typography>
+          <Link to={`/posts/${post._id}`} style={{ textDecoration: "none" }}>
+            <Typography variant="h6" component="div" sx={{ mt: 0.5 }}>
+              {post.title}
+            </Typography>
+          </Link>
         </Box>
       </Box>
     </Box>
