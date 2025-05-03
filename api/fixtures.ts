@@ -74,8 +74,6 @@ const run = async () => {
       datetime: new Date(new Date().getTime() - 1000),
     }
   );
-
-
   await db.close();
 };
 

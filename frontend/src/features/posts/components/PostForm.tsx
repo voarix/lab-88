@@ -1,5 +1,5 @@
 import Grid from "@mui/material/Grid";
-import { Button, TextField } from "@mui/material";
+import { Button, CircularProgress, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
@@ -178,7 +178,11 @@ const PostForm: React.FC<Props> = ({ onSubmitPost, loading, error }) => {
               },
             }}
           >
-            Create
+            {loading ? (
+              <CircularProgress size={24} sx={{ color: "#9C27B0" }} />
+            ) : (
+              "Create"
+            )}
           </Button>
         </Grid>
       </Grid>

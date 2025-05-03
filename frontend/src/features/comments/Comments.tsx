@@ -37,7 +37,7 @@ const Comments: React.FC<Props> = ({ postId }) => {
 
   return (
     <Box sx={{ mt: 7 }}>
-      <Typography variant="h5">Comments:</Typography>
+      <Typography variant="h5" sx={{ mb: 6 }}>Comments:</Typography>
 
       {user && (
         <CommentForm
@@ -61,8 +61,8 @@ const Comments: React.FC<Props> = ({ postId }) => {
         </Box>
       ) :
         <Typography
-          variant="body2"
-          sx={{ mt: 2, textAlign: "center", color: "#777" }}
+          variant="body1"
+          sx={{ mt: 4, mb: 5, textAlign: "center", color: "#777" }}
         >
           Comments not yet
         </Typography>

@@ -33,7 +33,7 @@ const Posts = () => {
         </Alert>
       )}
 
-      {posts ? (
+      {posts && posts.length > 0 ? (
         <Box>
           {posts.map((post) => (
             <PostItem key={post._id} post={post} />
